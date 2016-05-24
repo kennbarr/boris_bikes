@@ -26,8 +26,17 @@ describe DockingStation do
       expect{subject.release_bike}.to raise_error
     end
   end
+  describe "initialize docking station" do
+    it "allows you to initialize docking station with custom capacity" do
+      expect(DockingStation.new(15).capacity).to eq(15)
+    end
+    it "allows you to initialize docking station with default capacity" do
+      expect(DockingStation.new.capacity).to eq(20)
+    end
+  end
 
 end
+
 
 describe Bike do
   it "Expects the bike to be working" do
