@@ -5,7 +5,6 @@ describe DockingStation do
 
   describe "dock" do
     it "Expects dock method to exist" do
-
       expect(subject.dock(Bike.new))
     end
 
@@ -13,7 +12,7 @@ describe DockingStation do
       station = DockingStation.new
       bike = Bike.new
       station.dock(bike)
-      expect(station.docked_bikes).to eq [bike]
+      expect(station.bikes).to eq [bike]
     end
 
     it "Raise an exception when trying to dock a bike in a full docking station" do
@@ -28,6 +27,32 @@ describe DockingStation do
     end
   end
 
+  describe "Test cases for full? predicate method" do
+    it "If docking station is full, returns true" do
+      station = DockingStation.new
+      20.times {station.dock(Bike.new)}
+      expect(station.full?).to eq true
+    end
+    it "If docking station is empty, returns false" do
+      expect(subject.full?).to eq false
+    end
+    it "If docking station is not full, returns false" do
+      station = DockingStation.new
+      19.times {station.dock(Bike.new)}
+      expect(station.full?).to eq false
+    end
+  end
+
+  describe "Test cases for empty? predicate method" do
+    it "If docking station is empty, returns true" do
+      expect(subject.empty?).to eq true
+    end
+    it "If docking station is not empty, returns false" do
+      station = DockingStation.new
+      10.times {station.dock(Bike.new)}
+      expect(station.empty?).to eq false
+    end
+  end
 
 end
 

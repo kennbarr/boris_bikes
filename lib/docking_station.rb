@@ -1,23 +1,37 @@
 class DockingStation
-  attr_reader :docked_bikes
+
+  attr_reader :bikes
+
   def initialize
-    @docked_bikes = []
+    @bikes = []
     @limit = 20
   end
+
   def release_bike
-    if @docked_bikes == []
+    if @bikes == []
       raise Exception.new("No bikes left to release")
     else
-      @docked_bikes.pop
+      @bikes.pop
     end
   end
+
   def dock (bike)
-    if (@docked_bikes.length == @limit)
+    if (@bikes.length == @limit)
       raise Exception.new("Bike not docked as docking station is already full")
     else
-      @docked_bikes << bike
+      @bikes << bike
     end
   end
+
+  private
+    def full?
+      @bikes.length == @limit ? true : false
+    end
+
+    def empty?
+      @bikes.length == 0 ? true : false
+    end
+
 end
 
 class Bike
