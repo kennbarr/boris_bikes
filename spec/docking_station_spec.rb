@@ -1,20 +1,26 @@
 require 'docking_station'
 
 describe DockingStation do
-  it {subject.release_bike}
+  it {is_expected.to respond_to(:release_bike)}
+
   describe "dock" do
-    it "expects dock method to exist" do
+    it "Expects dock method to exist" do
 
       expect(subject.dock(Bike.new))
     end
 
-  it "expects a value in doc" do
-    station = DockingStation.new
-    testbike = station.release_bike
-    station.dock(testbike)
-    expect(station.docked_bike).to eq testbike
-  end
+    it "Expects a value in dock" do
+      station = DockingStation.new
+      bike = Bike.new
+      station.dock(bike)
+      expect(station.docked_bikes).to eq [bike]
+    end
 
+  end
+  describe "release_bike" do
+    it "When attempt to release bike when no bikes left, throw error" do
+      expect{subject.release_bike}.to raise_error
+    end
   end
 end
 
