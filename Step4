@@ -1,0 +1,5 @@
+Error type: NameError
+Path: /Users/kennethbarrett/.rvm/rubies/ruby-2.3.0/bin/
+Line number: 11
+Error means: "Raised when a given name is invalid or undefined"
+Solution: Create the DockingStation class
