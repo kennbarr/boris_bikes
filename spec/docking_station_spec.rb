@@ -18,7 +18,7 @@ describe DockingStation do
 
     it "Raise an exception when trying to dock a bike in a full docking station" do
       station = DockingStation.new
-      station.dock(Bike.new)
+      20.times {station.dock(Bike.new)}
       expect{station.dock(Bike.new)}.to raise_error
     end
   end

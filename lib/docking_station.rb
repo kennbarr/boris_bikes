@@ -2,7 +2,7 @@ class DockingStation
   attr_reader :docked_bikes
   def initialize
     @docked_bikes = []
-    @limit = 1
+    @limit = 20
   end
   def release_bike
     if @docked_bikes == []
