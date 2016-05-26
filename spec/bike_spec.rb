@@ -2,16 +2,16 @@ require "bike"
 
 describe Bike do
   describe "#working?" do
-    it "should respond to working?" do
+    it "Should respond to working?" do
       expect(subject).to respond_to(:working?)
     end
   end
 
   describe "#broken" do
-    it "should respond to broken" do
+    it "Should respond to broken" do
       expect(subject).to respond_to(:broken)
     end
-    it "should not be working if reported broken" do
+    it "Should not be working if reported broken" do
       bike = Bike.new
       bike.broken
       expect(bike.working?).to eq false
@@ -19,10 +19,10 @@ describe Bike do
   end
 
   describe "#fixed" do
-    it "should fix a broken bike" do
+    it "Should fix a broken bike" do
       bike = Bike.new
       bike.broken
-      bike.fixed
+      bike.fix
       expect(bike.working?).to eq true
     end
   end

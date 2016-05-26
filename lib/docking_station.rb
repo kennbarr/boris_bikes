@@ -1,40 +1,35 @@
 require_relative 'bike'
 
-
 class DockingStation
-
+  attr_accessor :capacity, :working_bikes, :broken_bikes
   DEFAULT_CAPACITY = 20
 
-  attr_accessor :capacity, :bikes
+  attr_accessor :capacity, :working_bikes, :broken_bikes
 
   def initialize(capacity=DEFAULT_CAPACITY)
-    @bikes = []
+    @working_bikes = []
+    @broken_bikes = []
     @capacity = capacity
   end
 
   def release_bike
-    for i in 1..@bikes.length do
-      return @bikes.delete_at(-i) if @bikes[-i].working?
-    end
-
+    return working_bikes.pop if @working_bikes != []
     fail "No bikes available"
-    # fail "The bike is broken" if !@bikes.last.working?
-    # @bikes.pop if @bikes.last.working?
   end
 
   def dock bike
-    fail "There are already #{@capacity} bikes at the docking station" if full?
-    @bikes << bike
+    fail "The docking station is full" if full?
+    bike.working? ? @working_bikes << bike : @broken_bikes << bike
+  end
+
+  def full?
+    (@working_bikes.length + @broken_bikes.length) >= @capacity
   end
 
   private
 
-  def full?
-    @bikes.length >= @capacity
-  end
-
-  def empty?
-    @bikes.empty?
-  end
+    def empty?
+      (@working_bikes.empty? && @broken_bikes.empty?)
+    end
 
 end

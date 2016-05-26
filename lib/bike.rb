@@ -8,7 +8,7 @@ class Bike
     @working = false
   end
 
-  def fixed
+  def fix
     @working = true
   end
 

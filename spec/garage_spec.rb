@@ -8,11 +8,9 @@ describe Garage do
 
     it "fixes bikes in garage" do
       garage = Garage.new
-      bike1 = double("bike1", :fixed => true)
-      garage.bikes = [bike1]
+      bike1 = double("bike1", :fix => true)
+      garage.broken_bikes = [bike1]
       expect(garage.fix_bikes)
     end
-
-
   end
 end
