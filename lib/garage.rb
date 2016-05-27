@@ -1,12 +1,7 @@
-class Garage
-  attr_accessor :capacity, :working_bikes, :broken_bikes
-  DEFAULT_CAPACITY = 20
+require_relative 'bike_container'
 
-  def initialize(capacity=DEFAULT_CAPACITY)
-    @capacity = capacity
-    @working_bikes = []
-    @broken_bikes = []
-  end
+class Garage
+  include BikeContainer
 
   def fix_bikes
     @broken_bikes.each {|bike| bike.fix; @working_bikes << bike }
@@ -14,7 +9,7 @@ class Garage
   end
 
   def full?
-    @capacity <= @working_bikes + @broken_bikes
+    @capacity <= (@working_bikes.length + @broken_bikes.length)
   end
 
 end

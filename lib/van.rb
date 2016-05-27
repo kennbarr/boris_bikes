@@ -1,12 +1,7 @@
-class Van
-  attr_accessor :capacity, :working_bikes, :broken_bikes
-  DEFAULT_CAPACITY = 20
+require_relative 'bike_container'
 
-  def initialize(capacity=DEFAULT_CAPACITY)
-    @working_bikes = []
-    @broken_bikes = []
-    @capacity = capacity
-  end
+class Van
+  include BikeContainer
 
   def take_broken(station, max = @capacity-(@working_bikes.length+@broken_bikes.length))
     #optional "max" argument to allow ability to only take a certain number of broken_bikes
