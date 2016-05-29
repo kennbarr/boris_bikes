@@ -9,4 +9,14 @@ module BikeContainer
     @capacity = capacity
   end
 
+  def full?
+    (@working_bikes.length + @broken_bikes.length) >= @capacity
+  end
+
+  private
+
+    def empty?
+      (@working_bikes.empty? && @broken_bikes.empty?)
+    end
+
 end

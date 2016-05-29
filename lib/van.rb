@@ -32,9 +32,4 @@ class Van
       max -=1
     end
   end
-
-  private
-    def full?
-      @capacity <= (@working_bikes.length+@broken_bikes.length)
-    end
 end

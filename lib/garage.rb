@@ -8,8 +8,4 @@ class Garage
     @broken_bikes = []
   end
 
-  def full?
-    @capacity <= (@working_bikes.length + @broken_bikes.length)
-  end
-
 end
